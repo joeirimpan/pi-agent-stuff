@@ -49,7 +49,7 @@ Extensions:
 | `answer.ts` | Answer mode — agent responds without tools |
 | `context.ts` | `/context` command for context overview |
 | `control.ts` | Session control utilities |
-| `cwd-history.ts` | Track and restore working directories |
+| `prompt-editor.ts` | Prompt editor utilities |
 | `files.ts` | Diff browser and changelog |
 | `loop.ts` | Looping task execution |
 | `review.ts` | Code review workflow |

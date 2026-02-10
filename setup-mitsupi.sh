@@ -15,9 +15,9 @@ EXTENSIONS=(
   answer.ts
   context.ts
   control.ts
-  cwd-history.ts
   files.ts
   loop.ts
+  prompt-editor.ts
   review.ts
   session-breakdown.ts
   todos.ts
