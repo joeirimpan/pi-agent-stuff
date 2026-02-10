@@ -1,0 +1,26 @@
+{
+  "name": "pi-agent-stuff",
+  "version": "0.1.0",
+  "description": "Joe's pi coding agent prompts and skills",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeirimpan/pi-agent-stuff.git"
+  },
+  "readme": "README.md",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi-skill"
+  ],
+  "pi": {
+    "skills": [
+      "./skills"
+    ],
+    "prompts": [
+      "./prompts"
+    ]
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*"
+  }
+}
