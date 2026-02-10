@@ -38,7 +38,7 @@ Run the setup script to pull extensions, skills, and themes from mitsuhiko's rep
 
 | Skill | Description |
 |-------|-------------|
-| `logchef` | Query application logs via [LogChef](https://github.com/logchefhq/logchef) CLI. |
+| `logchef` | Query application logs via [LogChef](https://github.com/mr-karan/logchef) CLI. |
 
 ### Via `setup-mitsupi.sh` (from [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff))
 
