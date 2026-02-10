@@ -5,7 +5,7 @@ Prompt templates and skills for the [pi coding agent](https://github.com/badlogi
 ## Acknowledgments
 
 - Code review prompt (`hodor`) adapted from [mr-karan/hodor](https://github.com/mr-karan/hodor)
-- Pi extensions and skills setup inspired by [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff)
+- Extensions, skills, and themes sourced from [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff)
 
 ## Installation
 
@@ -17,6 +17,12 @@ Add to your `~/.pi/agent/settings.json`:
     "/path/to/pi-agent-stuff"
   ]
 }
+```
+
+Run the setup script to pull extensions, skills, and themes from mitsuhiko's repo:
+
+```bash
+./setup-mitsupi.sh
 ```
 
 ## What's Included
@@ -33,6 +39,37 @@ Add to your `~/.pi/agent/settings.json`:
 | Skill | Description |
 |-------|-------------|
 | `logchef` | Query application logs via [LogChef](https://github.com/logchefhq/logchef) CLI. |
+
+### Via `setup-mitsupi.sh` (from [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff))
+
+Extensions:
+
+| Extension | Description |
+|-----------|-------------|
+| `answer.ts` | Answer mode — agent responds without tools |
+| `context.ts` | `/context` command for context overview |
+| `control.ts` | Session control utilities |
+| `cwd-history.ts` | Track and restore working directories |
+| `files.ts` | Diff browser and changelog |
+| `loop.ts` | Looping task execution |
+| `review.ts` | Code review workflow |
+| `session-breakdown.ts` | Interactive session breakdown |
+| `todos.ts` | Todo list management |
+| `whimsical.ts` | Whimsical agent personality |
+
+Skills:
+
+| Skill | Description |
+|-------|-------------|
+| `commit` | Structured git commits |
+| `tmux` | Remote control tmux sessions |
+| `web-browser` | Browser automation via CDP |
+
+Themes:
+
+| Theme | Description |
+|-------|-------------|
+| `nightowl` | Night Owl color theme |
 
 ## License
 
