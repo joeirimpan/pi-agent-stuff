@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Clone mitsuhiko/agent-stuff and copy selected extensions, skills, and themes
-# into ~/.pi/agent/packages/mitsupi-custom/
+# Consolidate everything into ~/.pi/agent/packages/mitsupi-custom/:
+#   - Selected extensions, skills, themes from mitsuhiko/agent-stuff (upstream)
+#   - Our own custom extensions, skills, and prompts from this repo
 #
-# Also installs our own custom extensions from ./extensions/
-#
-# Re-run to update from latest upstream.
+# Re-run to update.
 
 set -euo pipefail
 
@@ -88,17 +87,42 @@ if [[ -d "$SCRIPT_DIR/extensions" ]]; then
   done
 fi
 
+# Custom skills (from this repo's skills/ dir)
+if [[ -d "$SCRIPT_DIR/skills" ]]; then
+  echo "Installing custom skills..."
+  for skill_dir in "$SCRIPT_DIR"/skills/*/; do
+    [[ -d "$skill_dir" ]] || continue
+    name="$(basename "$skill_dir")"
+    rm -rf "$DEST/skills/$name"
+    cp -r "$skill_dir" "$DEST/skills/$name"
+    echo "  skill (custom): $name"
+  done
+fi
+
+# Custom prompts (from this repo's prompts/ dir)
+mkdir -p "$DEST/prompts"
+if [[ -d "$SCRIPT_DIR/prompts" ]]; then
+  echo "Installing custom prompts..."
+  for prompt in "$SCRIPT_DIR"/prompts/*.md; do
+    [[ -f "$prompt" ]] || continue
+    name="$(basename "$prompt")"
+    cp "$prompt" "$DEST/prompts/$name"
+    echo "  prompt (custom): $name"
+  done
+fi
+
 # Package manifest
 cat > "$DEST/package.json" <<'EOF'
 {
   "name": "mitsupi-custom",
   "version": "1.0.0",
-  "description": "Selected extensions and skills from mitsuhiko/agent-stuff",
+  "description": "Extensions, skills, prompts, and themes — upstream (mitsuhiko) + custom",
   "type": "module",
   "keywords": ["pi-package"],
   "pi": {
     "extensions": ["./extensions"],
     "skills": ["./skills"],
+    "prompts": ["./prompts"],
     "themes": ["./themes"]
   },
   "peerDependencies": {
