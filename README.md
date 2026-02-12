@@ -19,10 +19,10 @@ Add to your `~/.pi/agent/settings.json`:
 }
 ```
 
-Run the setup script to pull extensions, skills, and themes from mitsuhiko's repo:
+Run the setup script to install everything into `~/.pi/agent/packages/mitsupi-custom/`:
 
 ```bash
-./setup-mitsupi.sh
+./setup-pi.sh
 ```
 
 ## What's Included
@@ -47,7 +47,7 @@ Run the setup script to pull extensions, skills, and themes from mitsuhiko's rep
 |-----------|-------------|
 | `move-session.ts` | `/move-session` — move sessions between project directories |
 
-### Via `setup-mitsupi.sh` (from [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff))
+### Via upstream ([mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff))
 
 Extensions:
 
