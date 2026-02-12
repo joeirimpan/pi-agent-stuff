@@ -2,6 +2,8 @@
 # Clone mitsuhiko/agent-stuff and copy selected extensions, skills, and themes
 # into ~/.pi/agent/packages/mitsupi-custom/
 #
+# Also installs our own custom extensions from ./extensions/
+#
 # Re-run to update from latest upstream.
 
 set -euo pipefail
@@ -9,6 +11,7 @@ set -euo pipefail
 REPO_URL="https://github.com/mitsuhiko/agent-stuff.git"
 CLONE_DIR="/tmp/mitsupi-clone"
 DEST="$HOME/.pi/agent/packages/mitsupi-custom"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # What to copy
 EXTENSIONS=(
@@ -73,6 +76,17 @@ for theme in "${THEMES[@]}"; do
     echo "  theme: $theme (NOT FOUND, skipping)"
   fi
 done
+
+# Custom extensions (from this repo's extensions/ dir)
+if [[ -d "$SCRIPT_DIR/extensions" ]]; then
+  echo "Installing custom extensions..."
+  for ext in "$SCRIPT_DIR"/extensions/*.ts; do
+    [[ -f "$ext" ]] || continue
+    name="$(basename "$ext")"
+    cp "$ext" "$DEST/extensions/$name"
+    echo "  ext (custom): $name"
+  done
+fi
 
 # Package manifest
 cat > "$DEST/package.json" <<'EOF'

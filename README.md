@@ -41,6 +41,12 @@ Run the setup script to pull extensions, skills, and themes from mitsuhiko's rep
 | `logchef` | Query application logs via [LogChef](https://github.com/mr-karan/logchef) CLI. |
 | `web-browser` | Browser automation via CDP. Fork of mitsuhiko's skill with cross-platform support (Linux/macOS), auto-detection of Chrome/Chromium binaries, and a `stop.js` script for graceful shutdown. |
 
+### Custom Extensions
+
+| Extension | Description |
+|-----------|-------------|
+| `move-session.ts` | `/move-session` — move sessions between project directories |
+
 ### Via `setup-mitsupi.sh` (from [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff))
 
 Extensions:
