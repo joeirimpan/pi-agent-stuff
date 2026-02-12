@@ -27,7 +27,6 @@ EXTENSIONS=(
 SKILLS=(
   commit
   tmux
-  web-browser
 )
 
 THEMES=(
