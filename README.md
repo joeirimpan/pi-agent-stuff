@@ -45,7 +45,9 @@ Run the setup script to install everything into `~/.pi/agent/packages/mitsupi-cu
 
 | Extension | Description |
 |-----------|-------------|
+| `git-guard.ts` | Confirmation gate for destructive git operations (commit, rebase, reset, force-push, etc.) |
 | `move-session.ts` | `/move-session` — move sessions between project directories |
+| `recap.ts` | `/recap [date]` — summarize daily session activity across all projects as project-wise one-liners |
 
 ### Via upstream ([mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff))
 
