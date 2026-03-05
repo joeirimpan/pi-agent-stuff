@@ -76,38 +76,38 @@ for theme in "${THEMES[@]}"; do
   fi
 done
 
-# Custom extensions (from this repo's extensions/ dir)
+# Custom extensions (symlinked from this repo's extensions/ dir)
 if [[ -d "$SCRIPT_DIR/extensions" ]]; then
-  echo "Installing custom extensions..."
+  echo "Installing custom extensions (symlinks)..."
   for ext in "$SCRIPT_DIR"/extensions/*.ts; do
     [[ -f "$ext" ]] || continue
     name="$(basename "$ext")"
-    cp "$ext" "$DEST/extensions/$name"
-    echo "  ext (custom): $name"
+    ln -sf "$ext" "$DEST/extensions/$name"
+    echo "  ext (custom): $name -> $ext"
   done
 fi
 
-# Custom skills (from this repo's skills/ dir)
+# Custom skills (symlinked from this repo's skills/ dir)
 if [[ -d "$SCRIPT_DIR/skills" ]]; then
-  echo "Installing custom skills..."
+  echo "Installing custom skills (symlinks)..."
   for skill_dir in "$SCRIPT_DIR"/skills/*/; do
     [[ -d "$skill_dir" ]] || continue
     name="$(basename "$skill_dir")"
     rm -rf "$DEST/skills/$name"
-    cp -r "$skill_dir" "$DEST/skills/$name"
-    echo "  skill (custom): $name"
+    ln -sf "$skill_dir" "$DEST/skills/$name"
+    echo "  skill (custom): $name -> $skill_dir"
   done
 fi
 
-# Custom prompts (from this repo's prompts/ dir)
+# Custom prompts (symlinked from this repo's prompts/ dir)
 mkdir -p "$DEST/prompts"
 if [[ -d "$SCRIPT_DIR/prompts" ]]; then
-  echo "Installing custom prompts..."
+  echo "Installing custom prompts (symlinks)..."
   for prompt in "$SCRIPT_DIR"/prompts/*.md; do
     [[ -f "$prompt" ]] || continue
     name="$(basename "$prompt")"
-    cp "$prompt" "$DEST/prompts/$name"
-    echo "  prompt (custom): $name"
+    ln -sf "$prompt" "$DEST/prompts/$name"
+    echo "  prompt (custom): $name -> $prompt"
   done
 fi
 

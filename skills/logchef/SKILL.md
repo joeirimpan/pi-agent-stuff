@@ -46,7 +46,7 @@ logchef config set team "my-team"
 logchef config set source "my-source"
 ```
 
-**Note:** If a user mentions a namespace (e.g., "rms namespace"), filter by the `namespace` field in your query (e.g., `namespace="rms"`), not by changing the source.
+**Note:** If a user mentions a namespace (e.g., "api namespace"), filter by the `namespace` field in your query (e.g., `namespace="api"`), not by changing the source.
 
 ## Command Reference
 

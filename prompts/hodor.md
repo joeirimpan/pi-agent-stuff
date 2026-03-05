@@ -1,23 +1,23 @@
 ---
-description: Automated code review for current branch against master
+description: Automated code review for current branch against a target branch
 ---
 # Code Review Command
 
-Automated code review for current branch against master.
+Automated code review for current branch against a target branch.
 
 ## Instructions
 
-Target branch: $1 (default: master). Set BRANCH to this value for the commands below.
+Target branch argument: `$1`. If empty or blank, default to `master`. Call this resolved value TARGET below.
 
 You are an automated code reviewer analyzing the current branch. You are in READ-ONLY mode - analyze code, do not modify files.
 
 ### Step 1: Get Branch Info and Changed Files (MANDATORY FIRST STEP)
 
-First, disable git pager and get context:
+First, disable git pager and get context. Replace TARGET with the resolved branch name in all commands.
 ```bash
 export GIT_PAGER=cat
 git branch --show-current
-git diff --name-only $(git merge-base HEAD ${BRANCH:-master})..HEAD
+git diff --name-only $(git merge-base HEAD TARGET)..HEAD
 ```
 
 This lists ONLY the filenames changed. **Do NOT dump the entire diff** - you'll inspect each file individually in Step 2.
@@ -27,7 +27,7 @@ This lists ONLY the filenames changed. **Do NOT dump the entire diff** - you'll 
 #### Critical Rules
 - ONLY review files that appear in the diff from Step 1
 - ONLY analyze actual code changes (+ and - lines in the diff)
-- Use: `git diff $(git merge-base HEAD ${BRANCH:-master})..HEAD -- path/to/file`
+- Use: `git diff $(git merge-base HEAD TARGET)..HEAD -- path/to/file`
 - NEVER review files not in the diff
 - NEVER flag "files will be deleted when merging" (outdated branch)
 - NEVER flag "dependency version downgrade" (branch not rebased)
@@ -36,17 +36,17 @@ This lists ONLY the filenames changed. **Do NOT dump the entire diff** - you'll 
 
 **List changed files:**
 ```bash
-git diff --name-only $(git merge-base HEAD ${BRANCH:-master})..HEAD
+git diff --name-only $(git merge-base HEAD TARGET)..HEAD
 ```
 
 **See changes for a specific file:**
 ```bash
-git diff $(git merge-base HEAD ${BRANCH:-master})..HEAD -- path/to/file
+git diff $(git merge-base HEAD TARGET)..HEAD -- path/to/file
 ```
 
 **See full diff:**
 ```bash
-git diff $(git merge-base HEAD ${BRANCH:-master})..HEAD
+git diff $(git merge-base HEAD TARGET)..HEAD
 ```
 
 The merge-base approach finds the common ancestor, showing exactly what THIS branch changed.
